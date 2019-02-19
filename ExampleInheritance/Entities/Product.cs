@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace ExampleInheritance.Entities
 {
@@ -20,9 +18,12 @@ namespace ExampleInheritance.Entities
             Price = price;
         }
 
-        public string PriceTag()
+        public virtual string PriceTag()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(Name);
+
+           return sb.ToString();
         }
     }
 }
