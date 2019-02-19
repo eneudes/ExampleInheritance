@@ -1,27 +1,38 @@
-﻿namespace ExampleInheritance.Entities
+﻿using System.Globalization;
+using System.Text;
+
+namespace ExampleInheritance.Entities
 {
     class ImportedProduct : Product
     {
-        public double CustomsFree { get; set; }
+        public double CustomsFee { get; set; }
 
         public ImportedProduct()
         {
 
         }
 
-        public ImportedProduct(double customsFree)
+        public ImportedProduct(string name, double price, double customsFee)
+            : base(name, price)
         {
-            CustomsFree = customsFree;
+            CustomsFee = customsFee;
         }
 
         public double TotalPrice()
         {
-            return;
+            return Price + CustomsFee;
         }
 
         public override string PriceTag()
         {
-            return base.PriceTag();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Name
+                + "$"
+                + TotalPrice().ToString("F2", CultureInfo.InvariantCulture)
+                + " (customs free: $"
+                + CustomsFee.ToString("F2", CultureInfo.InvariantCulture)
+                + ")");
+            return sb.ToString();
         }
     }
 }

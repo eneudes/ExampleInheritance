@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ExampleInheritance.Entities
 {
@@ -19,7 +20,9 @@ namespace ExampleInheritance.Entities
 
         public override string PriceTag()
         {
-            return base.PriceTag();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{Name} (used) ${Price} (manufacture date: {ManufactureDate.ToString("dd/MM/yyyy")})");
+            return sb.ToString();
         }
     }
 }

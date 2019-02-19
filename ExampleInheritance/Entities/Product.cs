@@ -21,9 +21,8 @@ namespace ExampleInheritance.Entities
         public virtual string PriceTag()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(Name);
-
-           return sb.ToString();
+            sb.Append(Name + " $" + Price);
+            return sb.ToString();
         }
     }
 }
